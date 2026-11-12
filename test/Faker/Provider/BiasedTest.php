@@ -48,9 +48,9 @@ final class BiasedTest extends TestCase
 
         foreach ($this->results as $number => $amount) {
             // integral
-            $assumed = 0.5 * pow(1 / self::MAX * $number, 2) - 0.5 * pow(1 / self::MAX * ($number - 1), 2);
+            $assumed = 0.5 * (1 / self::MAX * $number) ** 2 - 0.5 * (1 / self::MAX * ($number - 1)) ** 2;
             // calculate the fraction of the whole area
-            $assumed /= pow(1, 2) * .5;
+            $assumed /= 1 ** 2 * .5;
             $this->assertGreaterThan(self::NUMBERS * $assumed * .9, $amount, "Value was more than 10 percent under the expected value");
             $this->assertLessThan(self::NUMBERS * $assumed * 1.1, $amount, "Value was more than 10 percent over the expected value");
         }
@@ -62,11 +62,11 @@ final class BiasedTest extends TestCase
 
         foreach ($this->results as $number => $amount) {
             // integral
-            $assumed = -0.5 * pow(1 / self::MAX * $number, 2) - -0.5 * pow(1 / self::MAX * ($number - 1), 2);
+            $assumed = -0.5 * (1 / self::MAX * $number) ** 2 - -0.5 * (1 / self::MAX * ($number - 1)) ** 2;
             // shift the graph up
             $assumed += 1 / self::MAX;
             // calculate the fraction of the whole area
-            $assumed /= pow(1, 2) * .5;
+            $assumed /= 1 ** 2 * .5;
             $this->assertGreaterThan(self::NUMBERS * $assumed * .9, $amount, "Value was more than 10 percent under the expected value");
             $this->assertLessThan(self::NUMBERS * $assumed * 1.1, $amount, "Value was more than 10 percent over the expected value");
         }

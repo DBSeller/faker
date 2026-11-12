@@ -127,7 +127,7 @@ final class BaseTest extends TestCase
     public function testRandomAsciiReturnsAsciiCharacter()
     {
         $lowercaseLetters = '!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
-        $this->assertNotFalse(strpos($lowercaseLetters, BaseProvider::randomAscii()));
+        $this->assertNotFalse(strpos($lowercaseLetters, (string) BaseProvider::randomAscii()));
     }
 
     public function testRandomElementReturnsNullWhenArrayEmpty()

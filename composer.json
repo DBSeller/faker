@@ -1,5 +1,5 @@
 {
-    "name": "fzaninotto/faker",
+    "name": "dbseller/faker",
     "type": "library",
     "description": "Faker is a PHP library that generates fake data for you.",
     "keywords": [
@@ -10,11 +10,11 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "François Zaninotto"
+            "name": "Fran\u00e7ois Zaninotto"
         }
     ],
     "require": {
-        "php": "^5.3.3 || ^7.0"
+        "php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3 || ^8.4 || ^8.5"
     },
     "require-dev": {
         "ext-intl": "*",
@@ -38,5 +38,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "replace": {
+        "fzaninotto/faker": "self.version"
     }
 }

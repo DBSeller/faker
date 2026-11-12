@@ -81,12 +81,12 @@ class Base
         if (null === $nbDigits) {
             $nbDigits = static::randomDigitNotNull();
         }
-        $max = pow(10, $nbDigits) - 1;
+        $max = 10 ** $nbDigits - 1;
         if ($max > mt_getrandmax()) {
             throw new \InvalidArgumentException('randomNumber() can only generate numbers up to mt_getrandmax()');
         }
         if ($strict) {
-            return mt_rand(pow(10, $nbDigits - 1), $max);
+            return mt_rand(10 ** ($nbDigits - 1), $max);
         }
 
         return mt_rand(0, $max);
@@ -349,10 +349,10 @@ class Base
 
     private static function replaceWildcard($string, $wildcard = '#', $callback = 'static::randomDigit')
     {
-        if (($pos = strpos($string, $wildcard)) === false) {
+        if (($pos = strpos($string, (string) $wildcard)) === false) {
             return $string;
         }
-        for ($i = $pos, $last = strrpos($string, $wildcard, $pos) + 1; $i < $last; $i++) {
+        for ($i = $pos, $last = strrpos($string, (string) $wildcard, $pos) + 1; $i < $last; $i++) {
             if ($string[$i] === $wildcard) {
                 $string[$i] = call_user_func($callback);
             }

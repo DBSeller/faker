@@ -85,7 +85,7 @@ class Image extends Base
             curl_setopt($ch, CURLOPT_FILE, $fp);
             $success = curl_exec($ch) && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200;
             fclose($fp);
-            curl_close($ch);
+            @curl_close($ch);
 
             if (!$success) {
                 unlink($filepath);

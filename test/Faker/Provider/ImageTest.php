@@ -83,7 +83,7 @@ final class ImageTest extends TestCase
         curl_setopt($curlPing, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($curlPing);
         $httpCode = curl_getinfo($curlPing, CURLINFO_HTTP_CODE);
-        curl_close($curlPing);
+        @curl_close($curlPing);
 
         if ($httpCode < 200 | $httpCode > 300) {
             $this->markTestSkipped("LoremPixel is offline, skipping image download");
@@ -92,7 +92,7 @@ final class ImageTest extends TestCase
         $file = Image::image(sys_get_temp_dir());
         $this->assertFileExists($file);
         if (function_exists('getimagesize')) {
-            list($width, $height, $type, $attr) = getimagesize($file);
+            [$width, $height, $type, $attr] = getimagesize($file);
             $this->assertEquals(640, $width);
             $this->assertEquals(480, $height);
             $this->assertEquals(constant('IMAGETYPE_JPEG'), $type);
