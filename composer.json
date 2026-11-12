@@ -11,6 +11,10 @@
     "authors": [
         {
             "name": "Fran\u00e7ois Zaninotto"
+        },
+        {
+            "name": "Gabriel Morgado",
+            "email": "gabriel.morgado@dbseller.com.br"
         }
     ],
     "require": {
@@ -41,5 +45,6 @@
     },
     "replace": {
         "fzaninotto/faker": "self.version"
-    }
+    },
+    "version": "1.9.3"
 }
